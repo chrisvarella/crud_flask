@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>List of Students</title>
+</head>
+<body>
+	<h3>List of Students</h3>
+	<table border="1" cellpadding="5" cellspacing="2">
+		<th>
+			<td>First Name</td>
+			<td>Last Name</td>
+			<td>Date of Birth</td>
+			<td>Amount Due</td>
+			<td>Update</td>
+			<td>Delete</td>
+		</th>
+
+		{%
+		for row in data %}
+		<tr>
+			<td>{{ row[0] }}</td>
+			<td>{{ row[1] }}</td>
+			<td>{{ row[2] }}</td>
+			<td>{{ row[3] }}</td>
+			<td>{{ row[4] }}</td>
+			<td><a href="{{ url_for('update', idstudent=row[0]) }}">Update</td>
+			<td><a href="{{ url_for('delete', idstudent=row[0]) }}">Delete</a></td>
+		</tr>
+		{%
+		endfor	%}	
+	</table>
+	<form action="/insert">
+		<br>
+		<input type="submit" value="Insert">
+	</form>
+</body>
+</html>
+
